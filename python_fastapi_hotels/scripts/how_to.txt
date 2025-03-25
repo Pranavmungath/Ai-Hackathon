@@ -1,0 +1,4 @@
+1. Run install_env.ps1 in powershell (right click the file -> edit -> run ) - This will setup the python environment with all needed 	packages
+
+2. Add the CLIENT_SECRET and CLIENT_ID in .env file in root file. ( will share over mail)
+2. Run start_server.ps1 in powerhsell - This will start the server - now if you navigate to http://localhost:8084/docs, you can see all api's available
