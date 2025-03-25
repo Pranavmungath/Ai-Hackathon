@@ -1,0 +1,4 @@
+venv/
+.venv/
+__pycache__
+python_fastapi_hotels/.env
