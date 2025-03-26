@@ -1,0 +1,500 @@
+{
+    "cities": [
+      {
+        "city": "Coimbatore",
+        "hotels": [
+          {
+            "hotel_id": "H011",
+            "hotel_name": "VIVANTA BY TAJ SURYA",
+            "reviews": [
+                {
+                    "reviewer_name": "Zeeshan Ansari",
+                    "rating": 5,
+                    "comment": "Had a wonderful stay at Vivanta Coimbatore! The hospitality was top-notch, with attentive and courteous staff ensuring a comfortable experience. The rooms were well-maintained, spacious, and elegantly designed. The food at the restaurant was delicious, offering a great mix of local and international flavors. The overall ambiance, service, and attention to detail made my stay truly enjoyable. Highly recommend",
+                    "date": "2025-03-11"
+                },
+                {
+                    "reviewer_name": "Varun Bagai",
+                    "rating": 5,
+                    "comment": "The hotel is placed in one of the good parts of the city. The rooms are clean and staff is really hospitable and always ready to help. Buffet spread was amazing - compliments to Chef Ramesh :) All in all, a great stay and completely value for money",
+                    "date": "2025-03-19"
+                },
+                {
+                    "reviewer_name": "siva kumar",
+                    "rating": 5,
+                    "comment": "I stayed at Vivanta Coimbatore for 2 days. The front-end staff were very friendly and made me feel welcome throughout my stay, accommodating all my requests. Special thanks to Vahini from the booking team, who went above and beyond by contacting the courier company to ensure my parcel was delivered on time. I will definitely stay at Vivanta again, especially for their exceptional hospitality.",
+                    "date": "2025-03-12"
+                },
+                {
+                    "reviewer_name": "Tejasswin M",
+                    "rating": 1,
+                    "comment": "A beautiful property ruined by poor service. We were visiting the Maruthamalai temple over the weekend and had booked Vivanta for a couple of nights. We turned up late (6 hours after checkin time) - yet our checkin was delayed by 20 minutes and we had to wait. Entering with a lot of excitement during checkin, we were disappointed to see an empty mini bar. When we went for breakfast too, we had to ask multiple people to get one dish. Nobody really kept track of orders properly and accountability was poor. To top it all, on our second night before we left outside we clearly indicated at the reception to have the room cleaned and came back to the same dirty room. And when we wanted to use the pool, we went to enquire for timings and the receptionist mocked us and didn’t give a clear answer. Extremely disappointing especially when you expect a little too high from the Taj group — I’ve been to major Taj hotels and the experience was way better there. Hope the staff is trained better to treat customers better regardless how they look or dress. A beautiful property being wasted with sub-par service. Sad.",
+                    "date": "2025-03-11"
+                },
+                {
+                    "reviewer_name": "veera bhadran",
+                    "rating": 1,
+                    "comment": "Worst 5 star hotel, I’ve stayed in Leela Palace, ITC, Grand Sheraton and many 5 star and 7 star hotels, but never experienced this kind of service in Coimbatore, I’m from Chennai, we booked a room of two, there was a visitor to us and suddenly the manager with 2 people requested the third person to evacuate saying AC will not be efficient when 3 people stay in room, and I invited a person for breakfast in the morning, we obviously have to pay extra for him, but the way the hotel staffs looked at him on a regular basis irritated him the most…as if we were to cheat them and run, never experienced ever in my life, these kind of experience. I will never visit them again !!",
+                    "date": "2025-01-26"
+                }
+            ],
+            "average_rating": 4.4,
+            "total_reviews": 9268
+          },
+          {
+            "hotel_id": "H012",
+            "hotel_name": "THE GATEWAY HOTEL CHURCH ROAD",
+            "reviews": [
+                {
+                    "reviewer_name": "Athiya Husain",
+                    "rating": 5,
+                    "comment": "My family was visiting Taj Gateway in Coonoor when my father fractured his hip. I cannot explain the support we received from management and staff. I’m overwhelmed to say the least that this hotel has upheld their standards and exceeded expectations. They provided car and driver to travel to and from the hospital, food and chai to the hospital and all free of cost!!! Management continually checked in on our family and the doctors, to enquire after dad’s tests and condition. Let me also make clear that the hotel has gorgeous rooms, comfortable beds and amenities you’d expect of a luxury hotel. The location, gardens and dining facilities were excellent. My family is forever grateful for the overwhelming hospitality and attention received from Taj Gateway. We will be returning to visit soon.",
+                    "date": "2025-01-15"
+                },
+                {
+                    "reviewer_name": "Mansi Bhati",
+                    "rating": 5,
+                    "comment": "I stayed in the hotel for 3 nights. Absolutely loved the hospitality. The services and the food was amazing. The whole staff was so helpful and welcoming. Special thanks to Evin, he took me for a nature walk and showed some of the finest viewpoint and unexplored places. He also helped me get the most authentic tea available. Amazing hospitality, thanks for such a great experience. Would love to come back and recommend all my friends.",
+                    "date": "2024-07-07"
+                },
+                {
+                    "reviewer_name": "Sriprabha Gopalan",
+                    "rating": 5,
+                    "comment": "We loved our stay at this property! Lots of greenery around, perfect location with access to everything within a short drive and extremely friendly staff who were always available to help when needed. The best part of all is this is one of the few pet friendly property in this area. Our dog loved his stay here and enjoyed running around all the lawns. They also cater to dog's dietary needs and provide amenities like dog bed, bowl, etc. will definitely come back with our dog again!",
+                    "date": "2025-05-20"
+                },
+                {
+                    "reviewer_name": "Vikram Prashanth",
+                    "rating": 1,
+                    "comment": "We were looking forward for a good time with family though it was a short stay, but ended up having a bitter experience. Didn't expect this from a Taj hotel. Not worth the money spent and will not recommend to anyone. - No hot water in the washrooms, had to call them in the middle of the night - Requested fireplace for room heating, but it went down in 15 mins - Electric heater was available but was not working - Spa was advertised in each and every room but was closed for maintenance - Front desk experience was pathetic, we negotiated for discounts, waiting for over 1 hour and ended up paying the full amount close to 1.6 lacs for one night. The location and rooms were good though, the overall hospitality was okayish. Food was good, except for the burnt brownie.",
+                    "date": "2025-08-07"
+                },
+                {
+                    "reviewer_name": "Uma",
+                    "rating": 1,
+                    "comment": "A last minute plan to visit and stay. We arrived on a cold night, management was not good. There was a bed near fire place so we dint use, room heaters were not provided. Bathrooms were not updated, cold floor. Restaurant service was good. They extended beyond working hours to serve us.",
+                    "date": "2025-03-19"
+                }
+            ],
+            "average_rating": 4.4,
+            "total_reviews": 1763
+          },
+          {
+            "hotel_id": "H013",
+            "hotel_name": "SAVOY HOTEL",
+            "reviews": [
+                {
+                    "reviewer_name": "Olivia Nunez",
+                    "rating": 3,
+                    "comment": "Stunning grounds and premises, well taken care of garden, evening bonfire with get together and games for all, fireplace in the room promptly lit on request, nice staff, great spa... However, there were a number of issues that make us unlikely to want to go back. To start with, the under floor heating in our room did not work. We were given a noisy electric heater that mitigated the cold, but only in the main room of our cottage. The front sitting room and bathroom were both freezing all the time (and we were told that even if the heating had worked, the bathroom was not heated!?). The breakfast was nice, but the dinner was a standard buffet with no charm. Alcohol was very expensive (e.g. double the price than in other hotels for the same Sula wine). The barman was lovely, but the furniture was tired and the bright lighting killed the atmosphere. We had read they had a snooker table, and we were really looking forward to a game of snooker in the birthplace of the game, but we were very disappointed because the snooker table was in a very bad condition and installed too close to a wall (so much so that it limited where the position of the cue), only one of the cues had a tip, and there were no rests.",
+                    "date": "2025-01-26"
+                },
+                {
+                    "reviewer_name": "D3generate",
+                    "rating": 3,
+                    "comment": "Stunning location with beautiful compound area. The room has a nice old vibe while still being well maintained. However, the bathroom is like something I'd expect in a 2 star hotel, very unpleasant and cold to shower in",
+                    "date": "2024-12-25"
+                },
+                {
+                    "reviewer_name": "Uma R",
+                    "rating": 5,
+                    "comment": "We were here for lunch today and had the infamous Badaga Thali which tasted so well. We were almost spoilt for choices on our food plate. Carrot halwa was so smooth, special mentions for the nilgiri kai kari kurma and besan chilla. They were our favorites. The keppankoozh was so soothing to the taste buds. Thank you so much Savoi and team for this amazon food and time at your place",
+                    "date": "2025-02-25"
+                },
+                {
+                    "reviewer_name": "Zainab surti",
+                    "rating": 3,
+                    "comment": "I wanted to share my recent experience at the resort, as I encountered some issues with both the food and service. Unfortunately, the meals did not meet expectations in terms of quality and taste, and the service was lacking in attentiveness and professionalism. I believe this feedback could help improve the overall guest experience in the future.",
+                    "date": "2024-11-07"
+                },
+                {
+                    "reviewer_name": "Vaibhav Arora",
+                    "rating": 5,
+                    "comment": "We visited to dine in, property is superb, wonderfully maintained, great lawns, beautiful flowers / landscaping. Food quality needs improvement, the manchow soup we ordered was quite a turn off, even the Chinese rice, noodles and curry we ordered was not upto the mark. Expected better from a Taj affiliated hotel.",
+                    "date": "2024-10-10"
+                }
+            ],
+            "average_rating": 4.3,
+            "total_reviews": 2090
+          },
+          {
+            "hotel_id": "H015",
+            "hotel_name": "CLARION HOTEL COIMBATORE",
+            "reviews": [
+                {
+                    "reviewer_name": "Silicon systems",
+                    "rating": 5,
+                    "comment": "This hotel truly impressed me from day one! Their attention into keeping things clean is remarkable—everywhere looked sparkly tidy and welcoming. Food choices were fantastic as well. Being my first visit, I couldn't ask for a better experience overall; it's been all positive moments from check-in till now! So happy with the lovely atmosphere—they made sure I'd want return visits in future trips. Sujan house keeping nice service",
+                    "date": "2025-03-19"
+                },
+                {
+                    "reviewer_name": "Dinesh T E",
+                    "rating": 5,
+                    "comment": "If you’re on the hunt for a pocket friendly hotel, look no further! My time spent here was like a mini-vacation within my travels. The staff were super awesome and totally took care of all my questions and requests with smiles on their faces. It’s that kind of warmth that makes any trip memorable! I’ll definitely come back next time; such comfy vibes—and oh-so affordable too.",
+                    "date": "2025-03-21"
+                },
+                {
+                    "reviewer_name": "Ramesh R.P",
+                    "rating": 5,
+                    "comment": "I recently stayed here during my work travels, and it was nothing short of terrific! This remarkable destination boasts super clean and roomy accommodations that really make you feel at home. Room service? Exceptional! Dining in-room was also such a treat – every bite full of flavor. Overall, I'm overjoyed with my choice; it's truly one of the top hotels around.sujan",
+                    "date": "2025-03-19"
+                },
+                {
+                    "reviewer_name": "Himantika Sharma",
+                    "rating": 1,
+                    "comment": "Very bad hotel and staff…they are looking for money only …after checkout they charged for those complementary items which was present in the room at the time of check in …(tea bags,water,dry fruits)they didn’t mention that it is chargeable and when we chekout and come downstairs and our taxi is waiting and we were getting late for airport they were asking for extra money and the amount they were asking for was more then their actual cost mention on the packets… which is absolutely unreasonable and pathetic ..i must suggest to not to go there",
+                    "date": "2024-06-09"
+                },
+                {
+                    "reviewer_name": "Arjun S",
+                    "rating": 1,
+                    "comment": "Their customer service has got to be the most crappy one I've ever come across. Right front the checkin time, the folks at the desk took their sweet time to check us in. If you want Ice? Gotta call a specific number. If you want water? Gotta call another number. As a customer, I don't want to deal with different numbers just because it's in solid or liquid state! 🙄. Also, early morning I asked them for help with the bags while checking out, but no one bothered to show up and take the bags to the car. I mean, it was literally just 5 meters; but no show - and this was at a time where we were running late to head out to a wedding function. The hotel rooms were kinda decent, but service was way worse than even a 2 star hotel. I have no clue on what basis this place has been rated a 4 star hotel. Wouldn't recommend this place to anyone under any circumstances.",
+                    "date": "2025-02-26"
+                }
+            ],
+            "average_rating": 4.5,
+            "total_reviews": 8243
+          },
+          {
+            "hotel_id": "H016",
+            "hotel_name": "THE RESIDENCY COIMBATORE",
+            "reviews": [
+                {
+                    "reviewer_name": "Boleslaw Jedenasty",
+                    "rating": 5,
+                    "comment": "Beautiful hotel, clean rooms, very good sanitary conditions. Delicious food. They take great care of the safety and comfort of their guests. It was my first time in India and all my worries about this trip quickly disappeared. Thank you for a wonderful time :)",
+                    "date": "2025-02-19"
+                },
+                {
+                    "reviewer_name": "Saara Raja",
+                    "rating": 5,
+                    "comment": "I booked 30 rooms for my friends from the US and Europe who were flying to Coimbatore for my wedding. The staff at The Residency were exceptional to work with in coordinating such a large group. They worked with me for creating and re-doing the room assignments multiple times and helped everyone have a smooth check-in and a wonderful stay.",
+                    "date": "2025-03-02"
+                },
+                {
+                    "reviewer_name": "Salil S",
+                    "rating": 5,
+                    "comment": "The Residency Tower in Coimbatore is a luxurious 5-star hotel renowned for its exceptional ambiance and impeccable service. With its prime location, it's an ideal choice for business meetings and events. While it excels in amenities, dining and hospitality, the hotel faces challenges with congestion and parking. Nonetheless, its outstanding features make it a top recommendation for those seeking comfort and elegance.",
+                    "date": "2025-10-15"
+                },
+                {
+                    "reviewer_name": "Abhinav Aggarwal",
+                    "rating": 1,
+                    "comment": "The Check-in took us 45 minutes even though we were the only people at the front desk. An additional 1 hour to get our luggage.. very unprofessional approach. The front desk executive had no idea about the rooms to be handed over to the guests. She kept changing the options for the rooms. Truly disappointed.",
+                    "date": "2024-03-05"
+                },
+                {
+                    "reviewer_name": "Inder Sharma",
+                    "rating": 1,
+                    "comment": "15 minutes check in time, room phones, tv don't work, ultimately room change, such was the experience. Buffet breakfast was good.",
+                    "date": "2025-03-19"
+                }
+            ],
+            "average_rating": 4.5,
+            "total_reviews": 7024
+          }
+        ]
+      },
+      {
+        "city": "Chennai",
+        "hotels": [
+          {
+            "hotel_id": "H201",
+            "hotel_name": "GINGER CHENNAI",
+            "reviews": [],
+            "average_rating": null,
+            "total_reviews": 0
+          },
+          {
+            "hotel_id": "H202",
+            "hotel_name": "HOLIDAY INN EXP CHENNAI MAHINDR",
+            "reviews": [],
+            "average_rating": null,
+            "total_reviews": 0
+          },
+          {
+            "hotel_id": "H203",
+            "hotel_name": "DECCAN PLAZA HOTEL",
+            "reviews": [],
+            "average_rating": null,
+            "total_reviews": 0
+          },
+          {
+            "hotel_id": "H204",
+            "hotel_name": "QUALITY INN SABARI",
+            "reviews": [],
+            "average_rating": null,
+            "total_reviews": 0
+          },
+          {
+            "hotel_id": "H205",
+            "hotel_name": "LEMON TREE HOTEL SHIMONA",
+            "reviews": [],
+            "average_rating": null,
+            "total_reviews": 0
+          },
+          {
+            "hotel_id": "H206",
+            "hotel_name": "FORTEL CHENNAI",
+            "reviews": [],
+            "average_rating": null,
+            "total_reviews": 0
+          },
+          {
+            "hotel_id": "H207",
+            "hotel_name": "GREENPARK CHENNAI",
+            "reviews": [],
+            "average_rating": null,
+            "total_reviews": 0
+          },
+          {
+            "hotel_id": "H208",
+            "hotel_name": "VIVANTA BY TAJ CONNEMARA",
+            "reviews": [],
+            "average_rating": null,
+            "total_reviews": 0
+          },
+          {
+            "hotel_id": "H209",
+            "hotel_name": "THE PARK CHENNAI",
+            "reviews": [],
+            "average_rating": null,
+            "total_reviews": 0
+          },
+          {
+            "hotel_id": "H210",
+            "hotel_name": "THE RAINTREE HOTEL ANNA SALAI",
+            "reviews": [],
+            "average_rating": null,
+            "total_reviews": 0
+          }
+        ]
+      },
+      {
+        "city": "Bengaluru",
+        "hotels": [
+          {
+            "hotel_id": "H001",
+            "hotel_name": "VIVANTA BY TAJ M G ROAD",
+            "reviews": [],
+            "average_rating": 5.0,
+            "total_reviews": 0
+          },
+          {
+            "hotel_id": "H002",
+            "hotel_name": "JW MARRIOTT HOTEL BENGALURU",
+            "reviews": [],
+            "average_rating": 5.0,
+            "total_reviews": 0
+          },
+          {
+            "hotel_id": "H003",
+            "hotel_name": "THE OBEROI, BANGALORE",
+            "reviews": [],
+            "average_rating": 5.0,
+            "total_reviews": 0
+          },
+          {
+            "hotel_id": "H004",
+            "hotel_name": "THE RITZ-CARLTON BANGALORE",
+            "reviews": [],
+            "average_rating": 5.0,
+            "total_reviews": 0
+          },
+          {
+            "hotel_id": "H005",
+            "hotel_name": "LEMON TREE HOTEL WHITEFIELD",
+            "reviews": [],
+            "average_rating": 4.0,
+            "total_reviews": 0
+          },
+          {
+            "hotel_id": "H006",
+            "hotel_name": "GOLDEN TULIP BANGALORE ELECTRONIC CITY",
+            "reviews": [],
+            "average_rating": 4.0,
+            "total_reviews": 0
+          },
+          {
+            "hotel_id": "H007",
+            "hotel_name": "FORTUNE SELECT JP COSMOS",
+            "reviews": [],
+            "average_rating": 4.0,
+            "total_reviews": 0
+          },
+          {
+            "hotel_id": "H008",
+            "hotel_name": "HOTEL ROYAL ORCHID BANGALORE",
+            "reviews": [],
+            "average_rating": 4.0,
+            "total_reviews": 0
+          },
+          {
+            "hotel_id": "H009",
+            "hotel_name": "THE LALIT ASHOK BANGALORE",
+            "reviews": [],
+            "average_rating": 5.0,
+            "total_reviews": 0
+          },
+          {
+            "hotel_id": "H010",
+            "hotel_name": "THE ZURI WHITEFIELD BENGALURU",
+            "reviews": [],
+            "average_rating": 5.0,
+            "total_reviews": 0
+          }
+        ]
+      },
+      {
+        "city": "Pune",
+        "hotels": [
+          {
+            "hotel_id": "P001",
+            "hotel_name": "HOTEL MILLENNIUM PARK",
+            "reviews": [],
+            "average_rating": null,
+            "total_reviews": 0
+          },
+          {
+            "hotel_id": "P002",
+            "hotel_name": "KAPILA BUSINESS HOTEL",
+            "reviews": [],
+            "average_rating": null,
+            "total_reviews": 0
+          },
+          {
+            "hotel_id": "P003",
+            "hotel_name": "VIVANTA BY TAJ BLUE DIAMOND",
+            "reviews": [],
+            "average_rating": null,
+            "total_reviews": 0
+          },
+          {
+            "hotel_id": "P004",
+            "hotel_name": "FORTUNE INN EXOTICA",
+            "reviews": [],
+            "average_rating": null,
+            "total_reviews": 0
+          },
+          {
+            "hotel_id": "P005",
+            "hotel_name": "GINGER PUNE PIMPRI",
+            "reviews": [],
+            "average_rating": null,
+            "total_reviews": 0
+          },
+          {
+            "hotel_id": "P006",
+            "hotel_name": "HOLIDAY INN PUNE HINJEWADI",
+            "reviews": [],
+            "average_rating": null,
+            "total_reviews": 0
+          },
+          {
+            "hotel_id": "P007",
+            "hotel_name": "THE ELITE SUITES",
+            "reviews": [],
+            "average_rating": null,
+            "total_reviews": 0
+          },
+          {
+            "hotel_id": "P008",
+            "hotel_name": "MERCURE LAVASA",
+            "reviews": [],
+            "average_rating": null,
+            "total_reviews": 0
+          },
+          {
+            "hotel_id": "P009",
+            "hotel_name": "COURTYARD CITY CENTRE MARRIOTT",
+            "reviews": [],
+            "average_rating": null,
+            "total_reviews": 0
+          },
+          {
+            "hotel_id": "P010",
+            "hotel_name": "JW MARRIOTT HOTEL PUNE",
+            "reviews": [],
+            "average_rating": null,
+            "total_reviews": 0
+          }
+        ]
+      },
+      {
+        "city": "Hyderabad",
+        "hotels": [
+          {
+            "hotel_id": "H001",
+            "hotel_name": "JUSTA ON NECKLACE ROAD",
+            "reviews": [],
+            "average_rating": null,
+            "total_reviews": 0
+          },
+          {
+            "hotel_id": "H002",
+            "hotel_name": "OHRIS BANJARA",
+            "reviews": [],
+            "average_rating": null,
+            "total_reviews": 0
+          },
+          {
+            "hotel_id": "H003",
+            "hotel_name": "TAJ DECCAN",
+            "reviews": [],
+            "average_rating": null,
+            "total_reviews": 0
+          },
+          {
+            "hotel_id": "H004",
+            "hotel_name": "BEST WESTERN ASHOKA",
+            "reviews": [],
+            "average_rating": null,
+            "total_reviews": 0
+          },
+          {
+            "hotel_id": "H005",
+            "hotel_name": "VIVANTA BY TAJ BEGUMPET",
+            "reviews": [],
+            "average_rating": null,
+            "total_reviews": 0
+          },
+          {
+            "hotel_id": "H006",
+            "hotel_name": "GREENPARK HYDERABAD",
+            "reviews": [],
+            "average_rating": null,
+            "total_reviews": 0
+          },
+          {
+            "hotel_id": "H007",
+            "hotel_name": "LEMON TREE PREMIER HITEC CITY HYDERABAD",
+            "reviews": [],
+            "average_rating": null,
+            "total_reviews": 0
+          },
+          {
+            "hotel_id": "H008",
+            "hotel_name": "ADITYA HOMETEL HYDERABAD",
+            "reviews": [],
+            "average_rating": null,
+            "total_reviews": 0
+          },
+          {
+            "hotel_id": "H009",
+            "hotel_name": "LICEC HOTEL AT LEONIA",
+            "reviews": [],
+            "average_rating": null,
+            "total_reviews": 0
+          },
+          {
+            "hotel_id": "H010",
+            "hotel_name": "THE GOLKONDA HYDERABAD",
+            "reviews": [],
+            "average_rating": null,
+            "total_reviews": 0
+          }
+        ]
+      }
+    ]
+  }
+  
