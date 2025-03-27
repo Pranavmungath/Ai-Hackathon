@@ -1,4 +1,4 @@
-from typing import Optional
+import os
 from datetime import datetime
 from pydantic import BaseModel, Field
 from openai import OpenAI
@@ -18,12 +18,12 @@ logger = logging.getLogger(__name__)
 
 # Set up ollama client
 client = OpenAI(
-    base_url = 'http://localhost:11434/v1',
-    api_key='ollama', # required, but unused
+    base_url="https://api.groq.com/openai/v1",
+    api_key=os.environ.get("GROQ_API_KEY")
 )
 
 # LLM model name
-model = "llama3.2:3b"
+model = "llama-3.3-70b-versatile"
 
 # Tools
 tools = [
@@ -90,12 +90,6 @@ class EventDetails(BaseModel):
         description="Date and time of checking out of the accomodation. Strictly use 'yyyy-mm-dd' date format for this value. Example is 2025-03-25"
     )
 
-
-class WeatherResponse(BaseModel):
-    weather_report: str = Field(
-        description="A text summary on the weather in natural language based on the weather forcast data")
-    
-
 # ---------------------------------------------------------------
 # Functions
 # ---------------------------------------------------------------\
@@ -144,44 +138,56 @@ def get_weather_forecast(latitude, longitude, start_date, end_date):
     return result
 
 
-def check_accomodation_request(input: str):
-    completion = client.beta.chat.completions.parse(
+def check_accomodation_request(input_prompt: str):
+    completion = client.chat.completions.create(
         model=model,
         messages=[
             {
                 "role": "system",
-                "content": "You are an assistant for finding accomodation. \
-                    You are allowed to answer only to queries related to accomodation search. \
-                    In case of other requests, you must decline. \
-                    In this context, Analyze if the text describes a query for finding accomodation. \
-                    Say yes if the text describes a query for finding accomodation, else say no",
+                "content": f"""
+                    You are an assistant for finding accomodation. 
+                    You are allowed to answer only to queries related to accomodation search.
+                    In case of other requests, you must decline.
+                    In this context, Analyze if the text describes a query for finding accomodation.
+                    Say yes if the text describes a query for finding accomodation, else say no.
+                    Output should be in json format:
+                    {json.dumps(check_prompt.model_json_schema(), indent=2)}
+                    """ 
             },
-            {"role": "user", "content": input},
+            {"role": "user", "content": input_prompt},
         ],
-        response_format=check_prompt
+        response_format={"type": "json_object"}
     )
 
-    return completion.choices[0].message.parsed.is_accomodation_search
+    return check_prompt.model_validate_json(completion.choices[0].message.content)
 
 
 def extract_stay_details(input:str):
-    completion = client.beta.chat.completions.parse(
+    today = datetime.now()
+    date_context = f"Today is {today.strftime('%A, %B %d, %Y')}."
+
+    completion = client.chat.completions.create(
         model=model,
         messages=[
             {
                 "role": "system",
-                "content": f"You are an assistant for finding accomodation. \
-                    Extract the name of the city/place in which the user wishes to stay. If city is not found, strictly use the placeholder [None].\
-                    Extract the check-in date. Check-in date is date on which the user will start staying in the accomodation. Strictly use 'yyyy-mm-dd' date format. If check-in date is not found, strictly use the placeholder [None].\
-                    Extract the check-out date. Check-out date is date on which the user will leave the accomodation.  Strictly use 'yyyy-mm-dd' date format. If check-out date is not found, strictly use the placeholder [None]. \
-                    Do not make any assumptions for the city, check-in date and check-out date.",
+                "content": f"""
+                    You are an assistant for finding accomodation.
+                    Extract the name of the city in which the user wishes to stay. If city is not found, strictly use the placeholder [None].
+                    {date_context} When dates reference 'next Tuesday' or similar relative dates, use this current date as reference.
+                    Extract the check-in date. Check-in date is date on which the user will start staying in the accomodation. Strictly use 'yyyy-mm-dd' date format. If check-in date is not found, strictly use the placeholder [None].
+                    Extract the check-out date. Check-out date is date on which the user will leave the accomodation.  Strictly use 'yyyy-mm-dd' date format. If check-out date is not found, strictly use the placeholder [None].
+                    Do not make any assumptions for the city, check-in date and check-out date.
+                    Output should be in json format:
+                    {json.dumps(EventDetails.model_json_schema(), indent=2)}
+                """
             },
             {"role": "user", "content": input},
         ],
-        response_format=EventDetails
+        response_format={"type": "json_object"}
     )
 
-    return completion
+    return EventDetails.model_validate_json(completion.choices[0].message.content)
 
 
 def get_weather_forecast_summary(place_of_stay:str, check_in_date:str, check_out_date:str):
@@ -262,11 +268,10 @@ def get_weather_forecast_summary(place_of_stay:str, check_in_date:str, check_out
             {"role": "tool", "tool_call_id": tool_call.id, "content": json.dumps(result)}
         )
 
-    weather_summary = client.beta.chat.completions.parse(
+    weather_summary = client.chat.completions.create(
         model=model,
         messages=messages,
-        tools=tools,
-        response_format=WeatherResponse,
+        tools=tools
     )
 
     return weather_summary, result
@@ -282,14 +287,14 @@ def process_accomodation_search(input: str):
     logger.info("Extracting details of stay...")
     stay_details = extract_stay_details(input)
 
-    place_of_stay = stay_details.choices[0].message.parsed.city
-    check_in_date = stay_details.choices[0].message.parsed.start_date
-    check_out_date = stay_details.choices[0].message.parsed.end_date
+    place_of_stay = stay_details.city
+    check_in_date = stay_details.start_date
+    check_out_date = stay_details.end_date
     logger.info(f"Stay Details - City: {place_of_stay}, Start Date: {check_in_date}, End Date: {check_out_date}")
 
     logger.info("Getting Weather Forecast...")
     weather_summary, weather_data = get_weather_forecast_summary(place_of_stay, check_in_date, check_out_date)
-    weather_summary = weather_summary.choices[0].message.parsed.weather_report
+    weather_summary = weather_summary.choices[0].message.content
 
     logger.info(f"Weather data: {weather_data}")
     logger.info(f"Weather summary: {weather_summary}")
