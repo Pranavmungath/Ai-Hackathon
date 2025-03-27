@@ -90,6 +90,20 @@ class EventDetails(BaseModel):
         description="Date and time of checking out of the accomodation. Strictly use 'yyyy-mm-dd' date format for this value. Example is 2025-03-25"
     )
 
+
+# Define the Pydantic model for hotel ranking
+class HotelRanking(BaseModel):
+    hotel_name: str = Field(description=f"Name of the hotel exactly as in the input")
+    reason: str = Field(description="A short explanation as to why the hotel was chosen for this rank?")
+    pros: str = Field(description="A bullet points about the pros of the hotel")
+    cons: str = Field(description="A bullet points about the cons of the hotel")
+
+
+class HotelRankingsResponse(BaseModel):
+    rank_1: HotelRanking = Field(description="The name, reason for being assigned first rank, pros and cons of the first ranked hotel")
+    rank_2: HotelRanking = Field(description="The name, reason for being assigned second rank, pros and cons of the second ranked hotel")
+    rank_3: HotelRanking = Field(description="The name, reason for being assigned third rank, pros and cons of the third ranked hotel")
+
 # ---------------------------------------------------------------
 # Functions
 # ---------------------------------------------------------------\
@@ -136,6 +150,22 @@ def get_weather_forecast(latitude, longitude, start_date, end_date):
         }
 
     return result
+
+
+def get_reviews_by_city_and_hotel(json_file, city_name, hotel_name):
+    # Load JSON data
+    with open(json_file, 'r') as file:
+        data = json.load(file)
+
+    # Iterate through cities
+    for city in data.get("cities", []):
+        if city["city"].lower() == city_name.lower():
+            # Iterate through hotels
+            for hotel in city.get("hotels", []):
+                if hotel["hotel_name"].lower() == hotel_name.lower():
+                    return hotel.get("reviews", [])
+
+    return []
 
 
 def check_accomodation_request(input_prompt: str):
@@ -276,7 +306,66 @@ def get_weather_forecast_summary(place_of_stay:str, check_in_date:str, check_out
 
     return weather_summary, result
 
-def process_accomodation_search(input: str):
+
+def review_hotels(city_name:str, reviews_json_file_path:str):
+    logger.info(f"Searching hotels...")
+    response = requests.get(f"http://localhost:8084/hotels?city={city_name}&ratings=%5B5%2C4%2C3%5D")
+    logger.info(response)
+    data = response.json()
+
+    logger.info(f"Summarizing reviews...")
+    reviews_string = ""
+    hotels_list = []
+    for hotel in data['hotels']:
+        if not hotel['name'].startswith('TEST'):
+            reviews = get_reviews_by_city_and_hotel(reviews_json_file_path, 'Bengaluru', hotel['name'])
+
+            if reviews:
+                hotels_list.append(hotel['name'])
+                reviews_string += (f"\nHotel name: {hotel['name']}")
+                for i, review in enumerate(reviews):
+                    reviews_string += (f"\nReview {i} (posted on {review['date']}): {review['comment']}")
+                reviews_string += "\n" + "-" * 50
+    
+    # System prompt for hotel ranking
+    system_prompt = f"""
+        You are a Hotel Ranking Assistant.
+        Your task is to evaluate and rank the hotels based on provided guest reviews.
+        After ranking the hotels, choose the top three hotels.
+        Safety should be most important criteria when evaluating the hotels.
+
+        Other Evaluation Criteria are as follows,
+        1. Service Quality: Friendliness, attentiveness, and responsiveness of staff.
+        2. Cleanliness & Maintenance: Cleanliness of rooms, public areas, and general upkeep.
+        3. Location & Accessibility: Proximity to key city areas, convenience of transport.
+        4. Amenities & Comfort: Quality of rooms, dining options, event spaces, and technology.
+        5. Guest Satisfaction: Consistency of positive feedback, handling of issues, and special gestures.
+
+        Ranking Logic:
+        - Analyze and compare the hotels across all criteria with safety being the utmost priority.
+        - Rank hotels from best to worst, clearly explaining why each hotel holds its position.
+        - Highlight both positive aspects (pros) and negative aspects (cons) for each hotel.
+
+        Output should be in below json format:
+        {json.dumps(HotelRankingsResponse.model_json_schema(), indent=2)}
+    """
+
+    completion_reviews = client.chat.completions.create(
+        model=model,
+        messages=[
+            {
+                "role": "system",
+                "content": system_prompt,
+            },
+            {"role": "user", "content": f"Based on the following reviews, summarise and choose the top 3 hotels. Reviews:\n{reviews_string}"},
+        ],
+        response_format={"type": "json_object"}
+    )
+
+    return HotelRankingsResponse.model_validate_json(completion_reviews.choices[0].message.content)
+
+
+def process_accomodation_search(input: str, reviews_json_file_path:str):
     logger.info("Checking if prompt is accomodation search request...")
     is_accomodation_request = check_accomodation_request(input)
 
@@ -298,9 +387,15 @@ def process_accomodation_search(input: str):
 
     logger.info(f"Weather data: {weather_data}")
     logger.info(f"Weather summary: {weather_summary}")
+
+    top_3_hotels = review_hotels(place_of_stay, reviews_json_file_path)
+
+    logger.info(f"Top 3 Hotels: {top_3_hotels}")
     
 if __name__ == "__main__":
+    reviews_json_file_path = 'knowledge_base/hotel_reviews.json'
+
     user_input = input()
-    process_accomodation_search(user_input)
+    process_accomodation_search(user_input, reviews_json_file_path)
 
 
