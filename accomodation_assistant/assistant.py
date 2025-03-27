@@ -214,7 +214,8 @@ def extract_stay_details(input:str):
             },
             {"role": "user", "content": input},
         ],
-        response_format={"type": "json_object"}
+        response_format={"type": "json_object"},
+        temperature=0.3
     )
 
     return EventDetails.model_validate_json(completion.choices[0].message.content)
@@ -309,48 +310,30 @@ def get_weather_forecast_summary(place_of_stay:str, check_in_date:str, check_out
 
 def review_hotels(city_name:str, reviews_json_file_path:str):
     logger.info(f"Searching hotels...")
-    try:
-        response = requests.get(f"http://localhost:8084/hotels?city={city_name}&ratings=%5B5%2C4%2C3%5D")
-        logger.info(response)
-        data = response.json()
-    except:
+    response = requests.get(f"http://localhost:8084/hotels?city={city_name}&ratings=%5B5%2C4%2C3%5D")
+
+    
+    if response.status_code == 500:
+        logger.error("Internal Server Error (500) encountered. Using already available hotel data.")
         data = {
             'hotels': [
-                {
-                    'name': 'VIVANTA BY TAJ SURYA'
-                },
-                {
-                    'name': 'THE GATEWAY HOTEL CHURCH ROAD'
-                },
-                {
-                    'name': 'SAVOY HOTEL'
-                },
-                {
-                    'name': 'CLARION HOTEL COIMBATORE'
-                },
-                {
-                    'name': 'THE RESIDENCY COIMBATORE'
-                },
-                {
-                    'name': 'VIVANTA BY TAJ M G ROAD'
-                },
-                {
-                    'name': 'JW MARRIOTT HOTEL BENGALURU'
-                },
-                {
-                    'name': 'THE OBEROI, BANGALORE'
-                },
-                {
-                    'name': 'LEMON TREE HOTEL WHITEFIELD'
-                },
-                {
-                    'name': 'GINGER BANGALORE WHITEFIELD'
-                },
-                {
-                    'name': 'THE ZURI WHITEFIELD BENGALURU'
-                }
+                {'name': 'VIVANTA BY TAJ SURYA'},
+                {'name': 'THE GATEWAY HOTEL CHURCH ROAD'},
+                {'name': 'SAVOY HOTEL'},
+                {'name': 'CLARION HOTEL COIMBATORE'},
+                {'name': 'THE RESIDENCY COIMBATORE'},
+                {'name': 'VIVANTA BY TAJ M G ROAD'},
+                {'name': 'JW MARRIOTT HOTEL BENGALURU'},
+                {'name': 'THE OBEROI, BANGALORE'},
+                {'name': 'LEMON TREE HOTEL WHITEFIELD'},
+                {'name': 'GINGER BANGALORE WHITEFIELD'},
+                {'name': 'THE ZURI WHITEFIELD BENGALURU'}
             ]
         }
+    else:
+        data = response.json()
+        logger.info("Response received successfully")
+        data = response.json()
 
     logger.info(f"Summarizing reviews...")
     reviews_string = ""
@@ -385,7 +368,7 @@ def review_hotels(city_name:str, reviews_json_file_path:str):
         - Rank hotels from best to worst, clearly explaining why each hotel holds its position.
         - Highlight both positive aspects (pros) and negative aspects (cons) for each hotel.
 
-        Output should be in below json format:
+        Output should strictly be in below json format:
         {json.dumps(HotelRankingsResponse.model_json_schema(), indent=2)}
     """
 
@@ -398,7 +381,8 @@ def review_hotels(city_name:str, reviews_json_file_path:str):
             },
             {"role": "user", "content": f"Based on the following reviews, summarise and choose the top 3 hotels. Reviews:\n{reviews_string}"},
         ],
-        response_format={"type": "json_object"}
+        response_format={"type": "json_object"},
+        temperature=0.7
     )
 
     return HotelRankingsResponse.model_validate_json(completion_reviews.choices[0].message.content)
