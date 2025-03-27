@@ -154,7 +154,7 @@ def get_weather_forecast(latitude, longitude, start_date, end_date):
 
 def get_reviews_by_city_and_hotel(json_file, city_name, hotel_name):
     # Load JSON data
-    with open(json_file, 'r') as file:
+    with open(json_file, encoding='utf-8') as file:
         data = json.load(file)
 
     # Iterate through cities
