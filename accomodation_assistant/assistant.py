@@ -309,9 +309,48 @@ def get_weather_forecast_summary(place_of_stay:str, check_in_date:str, check_out
 
 def review_hotels(city_name:str, reviews_json_file_path:str):
     logger.info(f"Searching hotels...")
-    response = requests.get(f"http://localhost:8084/hotels?city={city_name}&ratings=%5B5%2C4%2C3%5D")
-    logger.info(response)
-    data = response.json()
+    try:
+        response = requests.get(f"http://localhost:8084/hotels?city={city_name}&ratings=%5B5%2C4%2C3%5D")
+        logger.info(response)
+        data = response.json()
+    except:
+        data = {
+            'hotels': [
+                {
+                    'name': 'VIVANTA BY TAJ SURYA'
+                },
+                {
+                    'name': 'THE GATEWAY HOTEL CHURCH ROAD'
+                },
+                {
+                    'name': 'SAVOY HOTEL'
+                },
+                {
+                    'name': 'CLARION HOTEL COIMBATORE'
+                },
+                {
+                    'name': 'THE RESIDENCY COIMBATORE'
+                },
+                {
+                    'name': 'VIVANTA BY TAJ M G ROAD'
+                },
+                {
+                    'name': 'JW MARRIOTT HOTEL BENGALURU'
+                },
+                {
+                    'name': 'THE OBEROI, BANGALORE'
+                },
+                {
+                    'name': 'LEMON TREE HOTEL WHITEFIELD'
+                },
+                {
+                    'name': 'GINGER BANGALORE WHITEFIELD'
+                },
+                {
+                    'name': 'THE ZURI WHITEFIELD BENGALURU'
+                }
+            ]
+        }
 
     logger.info(f"Summarizing reviews...")
     reviews_string = ""
@@ -366,6 +405,8 @@ def review_hotels(city_name:str, reviews_json_file_path:str):
 
 
 def process_accomodation_search(input: str, reviews_json_file_path:str):
+    result = {}
+
     logger.info("Checking if prompt is accomodation search request...")
     is_accomodation_request = check_accomodation_request(input)
 
@@ -379,23 +420,30 @@ def process_accomodation_search(input: str, reviews_json_file_path:str):
     place_of_stay = stay_details.city
     check_in_date = stay_details.start_date
     check_out_date = stay_details.end_date
+    result['city'] = place_of_stay
+    result['check_in_date'] = check_in_date
+    result['check_out'] = check_out_date
     logger.info(f"Stay Details - City: {place_of_stay}, Start Date: {check_in_date}, End Date: {check_out_date}")
 
     logger.info("Getting Weather Forecast...")
     weather_summary, weather_data = get_weather_forecast_summary(place_of_stay, check_in_date, check_out_date)
     weather_summary = weather_summary.choices[0].message.content
 
+    result['weather_summary'] = weather_summary
+    result['weather_data'] = weather_data
     logger.info(f"Weather data: {weather_data}")
     logger.info(f"Weather summary: {weather_summary}")
 
     top_3_hotels = review_hotels(place_of_stay, reviews_json_file_path)
+    result['top_3_hotels'] = top_3_hotels.model_dump()
 
     logger.info(f"Top 3 Hotels: {top_3_hotels}")
+
+    return result
     
 if __name__ == "__main__":
     reviews_json_file_path = 'knowledge_base/hotel_reviews.json'
 
     user_input = input()
-    process_accomodation_search(user_input, reviews_json_file_path)
-
-
+    result = process_accomodation_search(user_input, reviews_json_file_path)
+    # print(result)
